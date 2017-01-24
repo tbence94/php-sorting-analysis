@@ -17,8 +17,8 @@ class BubbleSort extends Sorter implements SortingAlgorithm
     {
         $size = count($this->numbers);
 
-        for ($i=0; $i<$size; $i++) {
-            for ($j=0; $j<$size-1-$i; $j++) {
+        for ($i = 0; $i < $size; $i++) {
+            for ($j = 0; $j < $size-1-$i; $j++) {
                 if ($this->numbers[$j+1] < $this->numbers[$j]) {
                     $this->iterations++;
                     $this->swap($j, $j+1);
