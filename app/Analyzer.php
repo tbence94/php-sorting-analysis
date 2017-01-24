@@ -16,6 +16,7 @@ class Analyzer
     private $algorithms = [
         Algorithms\BubbleSort::class,
         Algorithms\MergeSort::class,
+        Algorithms\SelectionSort::class,
     ];
 
     /**
