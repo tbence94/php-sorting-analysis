@@ -40,7 +40,7 @@ class Analyzer
      *
      * @param integer $amount [amount of numbers to sort]
      */
-    public function __construct($amount=100)
+    public function __construct(int $amount=100)
     {
         $this->amount  = $amount;
         $this->numbers = range(1, $amount);
