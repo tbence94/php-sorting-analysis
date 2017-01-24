@@ -36,7 +36,7 @@ class BubbleSort extends Sorter implements SortingAlgorithm
      * @param  integer $y
      * @return void
      */
-    private function swap($x, $y)
+    private function swap(int $x, int $y)
     {
         $tmp               = $this->numbers[$x];
         $this->numbers[$x] = $this->numbers[$y];
