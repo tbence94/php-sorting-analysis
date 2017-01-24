@@ -17,5 +17,19 @@
             "App\\": "app/",
             "Tests\\": "tests/"
         }
+    },
+    "scripts": {
+        "post-install-cmd": [
+            "composer dumpautoload -o"
+        ],
+        "post-update-cmd": [
+            "composer dumpautoload -o"
+        ],
+        "post-root-package-install": [
+            "composer dumpautoload -o"
+        ],
+        "post-create-project-cmd": [
+            "composer dumpautoload -o"
+        ]
     }
 }
