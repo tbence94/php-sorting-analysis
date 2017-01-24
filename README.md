@@ -8,3 +8,7 @@ Implement popular sorting algorithms in PHP and compare their performance.
 
 ## Testing
 1. Run `$ phpunit` in project root to run tests.
+
+## External sources
+* [Composer](https://getcomposer.org/)
+* [PHPUnit](https://phpunit.de/)
