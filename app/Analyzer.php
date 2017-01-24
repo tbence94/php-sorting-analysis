@@ -17,6 +17,7 @@ class Analyzer
         Algorithms\BubbleSort::class,
         Algorithms\MergeSort::class,
         Algorithms\SelectionSort::class,
+        Algorithms\InsertionSort::class,
     ];
 
     /**
