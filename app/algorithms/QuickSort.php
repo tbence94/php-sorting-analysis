@@ -36,6 +36,8 @@ class QuickSort extends Sorter implements SortingAlgorithm
         $pivot     = array_shift($numbers);
 
         foreach ($numbers as $k => $v) {
+            $this->iterations++;
+            
             if ($v < $pivot) {
                 $left[$k] = $v;
             } else {

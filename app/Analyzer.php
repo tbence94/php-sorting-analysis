@@ -18,6 +18,7 @@ class Analyzer
         Algorithms\MergeSort::class,
         Algorithms\SelectionSort::class,
         Algorithms\InsertionSort::class,
+        Algorithms\QuickSort::class,
     ];
 
     /**
