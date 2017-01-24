@@ -42,5 +42,4 @@ class BubbleSort extends Sorter implements SortingAlgorithm
         $this->numbers[$x] = $this->numbers[$y];
         $this->numbers[$y] = $tmp;
     }
-
 }

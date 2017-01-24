@@ -33,7 +33,7 @@ abstract class Sorter implements ProvidesFeedback
 
     /**
      * Get iteration counter
-     * 
+     *
      * @return integer
      */
     public function getIterations()
