@@ -26,9 +26,9 @@ abstract class Sorter implements ProvidesFeedback
      *
      * @param array $numbers
      */
-    public function __construct($numbers)
+    public function __construct(array &$numbers)
     {
-        $this->numbers    = $numbers;
+        $this->numbers = $numbers;
     }
 
     /**

@@ -10,7 +10,7 @@ interface SortingAlgorithm
      *
      * @param array $numbers [an array of integers to sort]
      */
-    public function __construct($numbers);
+    public function __construct(array &$numbers);
 
     /**
      * SortingAlgorithms must provide a public sort function
