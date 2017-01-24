@@ -17,6 +17,7 @@ class AlgorithmTest extends TestCase
         \App\Algorithms\MergeSort::class,
         \App\Algorithms\SelectionSort::class,
         \App\Algorithms\InsertionSort::class,
+        \App\Algorithms\QuickSort::class,
     ];
 
     /**
@@ -33,7 +34,11 @@ class AlgorithmTest extends TestCase
     public function testAlgorithms()
     {
         foreach ($this->algorithms as $algorithm) {
+            // Assert it can really sort 
             $this->assertAlgorithmCanSort(new $algorithm($this->numbers));
+
+            // The original still must be shufled!
+            $this->assertNotEquals($this->numbers, $this->sorted);
         }
     }
 
