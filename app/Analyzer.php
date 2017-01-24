@@ -108,9 +108,9 @@ class Analyzer
         $complexities = [
             'n'        => $n,
             'n*2'      => $n * 2,
+            'n*log(n)' => intval( $n * log($n) ),
             'n^2'      => pow($n, 2),
             'n^3'      => pow($n, 3),
-            'n*log(n)' => intval( $n * log($n) ),
         ];
 
         $this->results = array_merge($complexities, $this->results);
