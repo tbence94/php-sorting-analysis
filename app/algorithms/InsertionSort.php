@@ -21,6 +21,8 @@ class InsertionSort extends Sorter implements SortingAlgorithm
             $j = $i;
 
             while ($j > 0 && $this->numbers[$j-1] > $number) {
+                $this->iterations++;
+                
                 $this->numbers[$j] = $this->numbers[$j-1];
                 $j = $j-1;
             }
