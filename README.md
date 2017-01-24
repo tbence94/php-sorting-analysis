@@ -12,3 +12,5 @@ Implement popular sorting algorithms in PHP and compare their performance.
 ## External sources
 * [Composer](https://getcomposer.org/)
 * [PHPUnit](https://phpunit.de/)
+* [PSR-2 Coding Style Guide](http://www.php-fig.org/psr/psr-2/)
+* [PSR-4 Autoloading](http://www.php-fig.org/psr/psr-4/)
