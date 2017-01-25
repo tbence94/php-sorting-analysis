@@ -3,6 +3,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
 Implement popular sorting algorithms in PHP and compare their performance.
+![Sorting algorithm performances compared](sorting-performance.png)
 
 ## Usage
 1. Clone the repository `$ git clone https://github.com/tbence94/php-sorting-analysis.git`
