@@ -3,6 +3,7 @@
 namespace App;
 
 use ReflectionClass;
+use App\Export;
 use App\Contracts\SortingAlgorithm;
 use App\Contracts\ProvidesFeedback;
 
@@ -23,7 +24,7 @@ class Analyzer
 
     /**
      * Iteration results of algorithms
-     * 
+     *
      * @var array
      */
     private $results = [];
@@ -36,16 +37,13 @@ class Analyzer
     private $amount;
 
     /**
-     * Generate an array of numbers to sort.
+     * Save the maximum amount of number to sort
      *
-     * @param integer $amount [amount of numbers to sort]
+     * @param integer $amount [maximum amount of numbers to sort]
      */
     public function __construct(int $amount=100)
     {
-        $this->amount  = $amount;
-        $this->numbers = range(1, $amount);
-
-        shuffle($this->numbers);
+        $this->amount = $amount;
     }
 
     /**
@@ -55,25 +53,32 @@ class Analyzer
      */
     public function analyzeAlgorithms()
     {
-        // Analyze each algorithm
-        foreach ($this->algorithms as $algorithm) {
-            $this->analyze(new $algorithm($this->numbers));
+        foreach (range(1, $this->amount) as $n) {
+            $this->numbers = range(1, $n);
+            shuffle($this->numbers);
+
+            // Analyze each algorithm
+            foreach ($this->algorithms as $algorithm) {
+                $this->analyze(new $algorithm($this->numbers), $n);
+            }
+
+            // Add common complexity iteration values to the results array
+            $this->computeComplexities($n);
+
+            // Show [ complexity/algorithm - iteration value ] results
+            $this->displayResults($n);
         }
 
-        // Add common complexity iteration values to the results array
-        $this->computeComplexities();
-
-        // Show [ complexity/algorithm - iteration value ] results
-        $this->displayResults();
     }
 
     /**
      * Analyze performance of the given algorithm
      *
      * @param  SortingAlgorithm $algorithm
+     * @param  integer $n
      * @return void
      */
-    private function analyze(SortingAlgorithm $algorithm)
+    private function analyze(SortingAlgorithm $algorithm, int $n)
     {
 
         // Run sorting
@@ -81,8 +86,7 @@ class Analyzer
 
         // Save results
         $name = (new ReflectionClass($algorithm))->getShortName();
-        $this->results[$name] = $this->getIterations($algorithm);
-
+        $this->results[$n][$name] = $this->getIterations($algorithm);
     }
 
     /**
@@ -98,46 +102,54 @@ class Analyzer
 
     /**
      * Add common Ordo values to the results
-     * 
+     *
+     * @param  integer $n
      * @return void
      */
-    private function computeComplexities()
+    private function computeComplexities(int $n)
     {
-        $n = $this->amount;
-
         // Calculate common Ordo ("Big O Notation") values
         $complexities = [
             'n'        => $n,
             'n*2'      => $n * 2,
-            'n*log(n)' => intval( $n * log($n) ),
+            'n*log(n)' => $n * log($n),
             'n^2'      => pow($n, 2),
-            'n^3'      => pow($n, 3),
         ];
 
-        $this->results = array_merge($complexities, $this->results);
+        $this->results[$n] = array_merge($complexities, $this->results[$n]);
     }
 
     /**
      * Display complexity analysis in a table
      *
+     * @param  integer $n
      * @return void
      */
-    private function displayResults()
+    private function displayResults(int $n)
     {
-
-        asort($this->results);
+        $results = $this->results[$n];
+        asort($results);
 
         $mask = " | %-25s | %-30s | \n";
 
         echo ' --------------------------------------------------------------'.PHP_EOL;
         printf($mask, 'Complexity / Algorithm', 'Iterations');
         echo ' --------------------------------------------------------------'.PHP_EOL;
-        foreach ($this->results as $complexity => $iterations) {
+        foreach ($results as $complexity => $iterations) {
             printf($mask, $complexity, $iterations);
         }
         echo ' --------------------------------------------------------------'.PHP_EOL;
-
     }
 
-
+    /**
+     * Create report and save to file
+     *
+     * @param  string $file
+     * @return void
+     */
+    public function createReport(string $file)
+    {
+        $report = new Export($this->results);
+        $report->saveTo($file);
+    }
 }
