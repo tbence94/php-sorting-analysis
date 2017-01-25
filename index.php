@@ -4,7 +4,6 @@ require_once 'vendor/autoload.php';
 
 use App\Analyzer;
 
-foreach ([10, 100, 1000] as $amount) {
-    $analyzer = new Analyzer($amount);
-    $analyzer->analyzeAlgorithms();
-}
+$analyzer = new Analyzer(500);
+$analyzer->analyzeAlgorithms();
+$analyzer->createReport('results/data-500.html');
