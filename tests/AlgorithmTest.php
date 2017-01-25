@@ -4,9 +4,11 @@ namespace Tests;
 
 use PHPUnit\Framework\TestCase;
 use App\Contracts\SortingAlgorithm;
+use App\Contracts\ProvidesFeedback;
 
 class AlgorithmTest extends TestCase
 {
+    
     /**
      * List of algorithms to test
      *
@@ -23,7 +25,8 @@ class AlgorithmTest extends TestCase
     /**
      * Generate numbers to sort.
      */
-    public function __construct() {
+    public function __construct()
+    {
         $this->numbers = $this->sorted = range(1, 100);
         shuffle($this->numbers);
     }
@@ -34,17 +37,23 @@ class AlgorithmTest extends TestCase
     public function testAlgorithms()
     {
         foreach ($this->algorithms as $algorithm) {
-            // Assert it can really sort 
-            $this->assertAlgorithmCanSort(new $algorithm($this->numbers));
+            $sorter = new $algorithm($this->numbers);
+
+            // Assert it can really sort
+            $this->assertAlgorithmCanSort($sorter);
 
             // The original still must be shufled!
             $this->assertNotEquals($this->numbers, $this->sorted);
+
+            // Check if it implements and extends the neccessary interfaces and classes
+            $this->assertInstanceOf(\App\Contracts\ProvidesFeedback::class, $sorter);
+            $this->assertInstanceOf(\App\Sorter::class, $sorter);
         }
     }
 
     /**
      * Check if given algorithm can sort
-     * 
+     *
      * @param  SortingAlgorithm $algorithm
      */
     private function assertAlgorithmCanSort(SortingAlgorithm $algorithm)
