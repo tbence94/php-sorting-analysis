@@ -7,4 +7,7 @@ php:
 
 sudo: false
 
-script: vendor/bin/phpunit
+script:
+  - composer install
+  - ls -al
+  - vendor/bin/phpunit
