@@ -7,6 +7,7 @@ use App\Contracts\SortingAlgorithm;
 
 class InsertionSort extends Sorter implements SortingAlgorithm
 {
+
     /**
      * Sort numbers with insertion sort algorithm
      *

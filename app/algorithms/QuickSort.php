@@ -7,6 +7,7 @@ use App\Contracts\SortingAlgorithm;
 
 class QuickSort extends Sorter implements SortingAlgorithm
 {
+
     /**
      * Call quicksort's recursive method
      *
@@ -19,7 +20,7 @@ class QuickSort extends Sorter implements SortingAlgorithm
 
     /**
      * An implementation of the quick sort algorithm
-     * 
+     *
      * @param  array $numbers
      * @return array
      */

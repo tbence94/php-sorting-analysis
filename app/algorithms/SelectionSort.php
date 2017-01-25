@@ -7,9 +7,10 @@ use App\Contracts\SortingAlgorithm;
 
 class SelectionSort extends Sorter implements SortingAlgorithm
 {
+
     /**
      * Sort numbers using the selection sort algorithm
-     * 
+     *
      * @return array
      */
     public function sort()
