@@ -41,7 +41,7 @@ class Analyzer
      *
      * @param integer $amount [maximum amount of numbers to sort]
      */
-    public function __construct(int $amount=100)
+    public function __construct(int $amount = 100)
     {
         $this->amount = $amount;
     }
@@ -68,7 +68,6 @@ class Analyzer
             // Show [ complexity/algorithm - iteration value ] results
             $this->displayResults($n);
         }
-
     }
 
     /**
