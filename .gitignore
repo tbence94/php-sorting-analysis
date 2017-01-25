@@ -1,3 +1,4 @@
 /vendor/
 /results/*
 !/results/.gitkeep
+composer.lock
