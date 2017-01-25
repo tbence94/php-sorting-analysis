@@ -8,4 +8,8 @@ sudo: false
 
 script:
   - composer install
+  - ./vendor/bin/phpcs --standard=PSR2 *.php app tests
   - vendor/bin/phpunit
+
+notifications:
+  email: false
