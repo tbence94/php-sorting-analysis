@@ -45,9 +45,8 @@ class AlgorithmTest extends TestCase
             // The original still must be shufled!
             $this->assertNotEquals($this->numbers, $this->sorted);
 
-            // Check if it implements and extends the neccessary interfaces and classes
+            // Check if it can provide feedback
             $this->assertInstanceOf(\App\Contracts\ProvidesFeedback::class, $sorter);
-            $this->assertInstanceOf(\App\Sorter::class, $sorter);
         }
     }
 
