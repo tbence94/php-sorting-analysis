@@ -47,6 +47,7 @@ class AlgorithmTest extends TestCase
 
             // Check if it can provide feedback
             $this->assertInstanceOf(\App\Contracts\ProvidesFeedback::class, $sorter);
+            $this->assertInternalType("int", $sorter->getIterations());
         }
     }
 
