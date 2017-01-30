@@ -63,9 +63,7 @@ class Export
      */
     private function chunk(array &$data, int $chunks)
     {
-        if (sizeof($data) > 0) {
-            return array_chunk($data, intval(ceil(count($data) / $chunks)));
-        }
+        return array_chunk($data, intval(ceil(count($data) / $chunks)));
     }
 
     /**
