@@ -47,5 +47,4 @@ class AnalyzerTest extends TestCase
             unlink(self::REPORT_FILE);
         }
     }
-
 }
